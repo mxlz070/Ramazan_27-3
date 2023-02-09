@@ -25,12 +25,12 @@ print(play.__len__())
 class FlyHero(SuperHero):
     people = 'people'
 
-    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage=False, fly=False):
+    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage, fly=False):
         super().__init__(name, nickname, superpower, health_points, catchphrase)
         self.damage = damage
         self.fly = fly
 
-    def health_2(self):
+    def multy_hillpoint(self):
         self.fly = True
         self.health_points **= 2
         print(f"Updated health points: {self.health_points}")
@@ -41,12 +41,12 @@ class FlyHero(SuperHero):
 class SpaceHero(SuperHero):
     people = 'people'
 
-    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage=False, fly=False):
+    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage, fly=False):
         super().__init__(name, nickname, superpower, health_points, catchphrase)
         self.damage = damage
         self.fly = fly
 
-    def health_2(self):
+    def multy_hillpoint(self):
         self.fly = True
         self.health_points **= 2
         print(f"Updated health points: {self.health_points}")
@@ -56,20 +56,20 @@ class SpaceHero(SuperHero):
 
 flyHero = FlyHero('SuperMan', 'S', 'Devil Eyes', 500, 'Batman is so weak!!!', 100)
 print(flyHero)
-flyHero.health_2()
+flyHero.multy_hillpoint()
 flyHero.method_fly()
 print()
 
 spaceHero = SpaceHero('Sasu', 'Saske', 'Chidori', 700, 'Narutoooo!', 150)
 print(spaceHero)
-spaceHero.health_2()
+spaceHero.multy_hillpoint()
 spaceHero.method_fly()
 print()
 
 class Villain(SpaceHero):
 
-    def __init__(self, name, nickname, superpower, health_points, catchphrase):
-        super().__init__(name, nickname, superpower, health_points, catchphrase)
+    def __init__(self, name, nickname, superpower, health_points, catchphrase, damage, fly=False):
+        super().__init__(name, nickname, superpower, health_points, catchphrase, damage, fly)
         SuperHero.people = 'monster'
 
     def gen_X(self):
@@ -79,5 +79,5 @@ class Villain(SpaceHero):
         return hero.damage ** 2
 
 
-villain = Villain('Nara', 'Naruto', 'Beast', 1000, 'Dattebayo')
+villain = Villain('Nara', 'Naruto', 'Beast', 1000, 'Dattebayo', 4000)
 print(villain.crit(flyHero))
